@@ -10,7 +10,4 @@ require_once 'bootstrap.php';
 
 use Doctrine\ORM\Tools\Console\ConsoleRunner;
 
-$doctrine = $bootstrap->loadDoctrineOrm();
-$entityManager = $doctrine->getEntityManager();
-
 return ConsoleRunner::createHelperSet($entityManager);

@@ -8,8 +8,6 @@
 
 require 'vendor/autoload.php';
 
-date_default_timezone_set('America/Sao_paulo');
-
 $isDevMode = true;
 
 $conn = array(
@@ -19,5 +17,7 @@ $conn = array(
     'dbname'=>'treina_w_doctrine'
 );
 
-$config = Setup::createAnnotationMetadataConfiguration(array(__DIR__."/src/Entities"), $isDevMode);
-$entityManager = EntityManager::create($conn, $config);
+$doctrine = new WebDevBr\Doctrine\Doctrine($conn, $isDevMode);
+$doctrine->setEntitiesDir('./src/App/Entities');
+
+$entityManager = $doctrine->getEntityManager();
